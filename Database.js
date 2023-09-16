@@ -1,17 +1,21 @@
 const mongoose = require("mongoose")
 
-const server = '127.0.0.1:27017'
+const server = 'aclcrl5.mongodb.net'
 const database = "produtoDB"
+const username = "lucasvicentin2018"
+const password = 'zz8qEIiCJJG2pZaD'
 
+
+//mongodb+srv://lucasvicentin2018:<password>@bancodedados./
 class Database {
     async _connect(){
         mongoose
-        .connect(`mongodb://${server}/${database}`)
+        .connect(`mongodb+srv://${username}:${password}@${database}.${server}`)
         .then(() =>{
             console.log("Conectado no banco com sucesso")
         })
-        .catch(()=>{
-            console.error("Erro ao conectar com o banco")
+        .catch((error)=>{
+            console.error("Erro ao conectar com o banco" + error)
         })
      }
 }
